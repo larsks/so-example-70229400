@@ -1,0 +1,17 @@
+version: '3'
+services:
+  netdata:
+    image: docker.io/alpinelinux/darkhttpd:latest
+    volumes:
+      - ./site/netdata:/var/www/localhost/htdocs
+  filebrowser:
+    image: docker.io/alpinelinux/darkhttpd:latest
+    volumes:
+      - ./site/filebrowser:/var/www/localhost/htdocs
+
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:z
